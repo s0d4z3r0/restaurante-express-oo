@@ -1,4 +1,4 @@
-from avaliacao import Avaliacao
+from modelos.avaliacao import Avaliacao
 
 class Restaurante:
     restaurantes = []
@@ -14,10 +14,10 @@ class Restaurante:
     
     @classmethod
     def listar_restaurantes(cls):
-        print(f'{'Nome do Restaurante'.ljust(28)} | {'Categoria'.ljust(25)} | {'Status'}')
+        print(f'{'Nome do Restaurante'.ljust(28)} | {'Categoria'.ljust(25)} | {'Avaliação'.ljust(25)} | {'Status'}')
         for indice, restaurante in enumerate(cls.restaurantes):
             id = indice + 1
-            print(f'{id}- {restaurante._nome.ljust(25)} | {restaurante.categoria.ljust(25)} | {restaurante.ativo}')
+            print(f'{id}- {restaurante._nome.ljust(25)} | {restaurante._categoria.ljust(25)} | {str(restaurante.media_avaliacoes).ljust(25)} | {restaurante.ativo}')
             
     @property
     def ativo(self):
