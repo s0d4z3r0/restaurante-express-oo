@@ -17,7 +17,7 @@ class Restaurante:
         print(f'{'Nome do Restaurante'.ljust(28)} | {'Categoria'.ljust(25)} | {'Avaliação'.ljust(25)} | {'Status'}')
         for indice, restaurante in enumerate(cls.restaurantes):
             id = indice + 1
-            print(f'{id}- {restaurante._nome.ljust(25)} | {restaurante._categoria.ljust(25)} | {str(restaurante.media_avaliacoes).ljust(25)} | {restaurante.ativo}')
+            print(f'{id}- {restaurante._nome.ljust(25)} | {restaurante._categoria.ljust(25)} | ⭐ {str(restaurante.media_avaliacoes).ljust(25)} | {restaurante.ativo}')
             
     @property
     def ativo(self):
@@ -27,8 +27,9 @@ class Restaurante:
         self._ativo = not self._ativo
         
     def receber_avaliacao(self, cliente, nota):
-        avaliacao = Avaliacao(cliente, nota)
-        self._avaliacao.append(avaliacao)
+        if 0 <= nota <= 5:
+            avaliacao = Avaliacao(cliente, nota)
+            self._avaliacao.append(avaliacao)
     
     @property    
     def media_avaliacoes(self):
